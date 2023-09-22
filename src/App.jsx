@@ -1,10 +1,12 @@
+import Body from "./components/Body";
+import Head from "./components/Head";
+
 function App() {
   return (
     <>
-      <div className="bg-cyan-500">
-        <h1 className="text-red-600 text-center text-2xl font-bold">
-          My-Youtube
-        </h1>
+      <div>
+        <Head />
+        <Body />
       </div>
     </>
   );
