@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { toggleMenu } from "../redux/appSlice";
+import { Link } from "react-router-dom";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Head = () => {
             src="https://cdn.iconscout.com/icon/free/png-256/free-hamburger-menu-462145.png?f=webp"
             alt="menu"
           />
+
           <img
             className="h-8 mx-1"
             src="https://vectorseek.com/wp-content/uploads/2021/01/YouTube-Logo-Vector.png"
