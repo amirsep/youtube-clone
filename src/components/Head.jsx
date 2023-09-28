@@ -1,25 +1,37 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../redux/appSlice";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../redux/searchSlice";
 
 const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestion] = useState(false);
+  const searchCache = useSelector((store) => store.search);
 
   // api call
   const getSearchSuggestions = async () => {
     const { data } = await axios.get(YOUTUBE_SEARCH_API + searchQuery);
     setSuggestions(data[1]);
+    dispatch(
+      cacheResults({
+        [searchQuery]: data[1],
+      })
+    );
   };
-
   useEffect(() => {
     // debouncing
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
     // clear timer
     return () => {
       clearTimeout(timer);
