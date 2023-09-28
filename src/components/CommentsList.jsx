@@ -6,7 +6,13 @@ const CommentsList = ({ comments }) => {
     <>
       <div>
         {comments.map((comment, index) => (
-          <Comment data={comment} key={index} />
+          <div>
+            <Comment data={comment} key={index} />
+
+            <div className="pl-5 ml-5 border border-l-black">
+              <CommentsList comments={comment.replies} />
+            </div>
+          </div>
         ))}
       </div>
     </>
