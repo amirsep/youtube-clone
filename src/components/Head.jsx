@@ -41,6 +41,7 @@ const Head = () => {
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+
   return (
     <>
       <div className="grid grid-flow-col p-4 shadow-lg">
@@ -64,7 +65,7 @@ const Head = () => {
         <div className="col-span-8">
           <div>
             <input
-              className="w-1/2 border border-gray-500 rounded-l-full p-2 "
+              className="w-1/2 border border-gray-500 rounded-l-full p-2"
               placeholder="Search"
               type="text"
               value={searchQuery}

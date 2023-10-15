@@ -6,9 +6,8 @@ const CommentsList = ({ comments }) => {
     <>
       <div>
         {comments.map((comment, index) => (
-          <div>
-            <Comment data={comment} key={index} />
-
+          <div key={index}>
+            <Comment data={comment} />
             <div className="pl-5 ml-5 border border-l-black">
               <CommentsList comments={comment.replies} />
             </div>

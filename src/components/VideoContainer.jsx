@@ -15,6 +15,7 @@ const VideoContainer = () => {
   useEffect(() => {
     getVideos();
   }, []);
+
   return (
     <>
       <div className="flex flex-wrap">
