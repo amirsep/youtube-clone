@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { OFFSET_LIVE_CHAT } from "../utils/constants";
 
 const chatSlice = createSlice({
   name: "chat",
@@ -7,7 +8,8 @@ const chatSlice = createSlice({
   },
   reducers: {
     addMessage: (state, action) => {
-      state.messages.push(action.payload);
+      state.messages.splice(OFFSET_LIVE_CHAT, 1);
+      state.messages.unshift(action.payload);
     },
   },
 });
